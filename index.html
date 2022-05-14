@@ -6,64 +6,58 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script scr="main.js"></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <script>
-        function computerPlay() {
-            //create a variable that stores a random number
-            let randomIndex = Math.floor(Math.random() * 3);
-            //create an array that colds rock, paper, and scissors
-            let weapon = ["rock", "paper", "scissors"];
-            //return the item at array[random] index
-            return weapon[randomIndex];
-        }
 
-        function playRound(playerSelection, computerSelection) {
-            //convert playerSelection to all lowercase
-            playerLowerCase = playerSelection.toLowerCase();
-            //if player and computer are the same, neither gets a score
-            if (playerLowerCase === computerSelection) {
-                return "Tie!";
-                //if computer beats player
-            } else if (playerLowerCase === "rock" && computerSelection === "paper" ||
-                playerLowerCase === "paper" && computerSelection === "scissors" ||
-                playerLowerCase === "scissors" && computerSelection === "rock") {
-                compScore += 1;
-                return "You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerLowerCase + ".";
-            } else {
-                userScore += 1;
-                return "pretty gud, chump";
-            }
-        }
+    <div class="header">
+        <div class="container">
+            <h1>ROCK PAPER SCISSORS</h1>
+        </div>
+    </div>
 
-        function game() {
-            //play 5 rounds (loop 5 times)
-            while (rounds > 0) {
-                //ask user for input (use prompt())
-                playerSelection = prompt("Which weapon do you want to play?");
-                //run playRound using user input
-                console.log(playRound(playerSelection, computerSelection));
-                rounds--;
-            }
-            //compare scores and output the winner
-            if (userScore > compScore) {
-                console.log("You win!! You beat the computer!");
-            } else if (compScore > userScore) {
-                console.log("You're a loser. You really suck. A machine beat you.")
-            } else {
-                console.log("Well dang! Pretty good, that was a tie.")
-            }
-        }
+    <div class="center-section">
+        <div class="container">
+            <div class="instructions">
+                <h1>Choose your weapon</h1>
+                <h3>First to score 5 points wins the game</h3>
+            </div>
 
-        const computerSelection = computerPlay();
-        let playerSelection = "";
-        let userScore = 0;
-        let compScore = 0;
-        let rounds = 5;
+            <div class="scoreBlock">
+                <div class="block">
+                    <h1 class="hand">?</h1>
+                    <h3>Player: 0</h2>
+                </div>
+                <div class="block">
+                    <h1 class="hand">?</h1>
+                    <h3>Computer: 0</h2>
+                </div>
+            </div>
 
-        game();
-    </script>
+            <div class="buttons">
+                <div class="singleButton">
+                    <input class="rock" Name="rock" type="Image" src="/images/rock.png">
+                    <h3>Rock</h3>
+                </div>
+                <div class="singleButton">
+                    <input class="paper" Name="paper" type="Image" src="/images/paper.png">
+                    <h3>Paper</h3>
+                </div>
+                <div class="singleButton">
+                    <input class="scissors" Name="scissors" type="Image" src="/images/scissors.png">
+                    <h3>Scissors</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <h3>GORDI 2022</h3>
+        </div>
+    </div>
 
 </body>
 

@@ -1,0 +1,150 @@
+        @import url('https://fonts.google.com/specimen/Press+Start+2P#standard-styles');
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            //border: blue 1px solid;
+        }
+        
+        html,
+        body {
+            height: 100%;
+        }
+        
+        body {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Poppins', sans-serif;
+            background: #212831;
+        }
+        
+        .header {
+            background: #141a23;
+        }
+        
+        .container {
+            max-width: 1100px;
+            height: 100%;
+            margin: 0 auto;
+        }
+        
+        .center-section {
+            flex: 1;
+        }
+        
+        .center-section .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            //border: yellow 2px solid;
+        }
+        
+        .instructions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: aliceblue;
+            flex: 1 0 auto;
+        }
+        
+        .container div {
+            padding-top: 30px;
+        }
+        
+        .container .scoreBlock {
+            display: flex;
+            flex: 1 0 auto;
+            gap: 150px;
+            color: aliceblue;
+        }
+        
+        .scoreBlock h1 {
+            font-size: 60pt;
+        }
+        
+        .block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 20px;
+            margin: 0 -40px;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-around;
+            gap: 40px;
+            flex: 1 0 auto;
+            padding-bottom: 30px;
+        }
+        
+        .singleButton {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            color: aliceblue;
+        }
+        
+        .singleButton input {
+            width: 150px;
+        }
+        
+        .singleButton {
+            transition: all .15s ease-in-out;
+        }
+        
+        .singleButton:hover {
+            transform: scale(1.1);
+        }
+        
+        .header .container {
+            display: flex;
+            flex-direction: column;
+            color: aliceblue;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            gap: 20px;
+        }
+        
+        .footer {
+            margin-top: auto;
+            flex-shrink: 0;
+            background-color: #141a23;
+        }
+        
+        .footer .container {
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-weight: 100;
+        }
+        
+        @media(max-width: 600px) {
+            .header .container {
+                font-size: 75%;
+            }
+            .center-section .buttons {
+                flex-direction: row;
+                gap: 20px;
+            }
+            .instructions {
+                font-size: 75%;
+                padding: 20px;
+            }
+            .container .scoreBlock {
+                padding-top: 0px;
+            }
+            .singleButton {
+                gap: 3px;
+            }
+            .singleButton input {
+                width: 85px;
+            }
+            .center-section .container {
+                flex: 1;
+            }
+        }
