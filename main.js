@@ -1,3 +1,31 @@
+//GAME LOGIC
+
+let userScore = 0;
+let computerScore = 0;
+let roundWinner = '';
+let rounds = 5;
+
+function playRound(playerSelection, computerSelection) {
+
+    if (playerSelection === computerSelection) {
+        roundWinner = 'tie';
+    }
+    if (playerSelection === "rock" && computerSelection === "paper" ||
+        playerSelection === "paper" && computerSelection === "scissors" ||
+        playerSelection === "scissors" && computerSelection === "rock") {
+        computerScore += 1;
+        //alert("You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerSelection + ".");
+        roundWinner = 'computer';
+    }
+    if (computerSelection === "rock" && playerSelection === "paper" ||
+        computerSelection === "paper" && playerSelection === "scissors" ||
+        computerSelection === "scissors" && playerSelection === "rock") {
+        userScore += 1;
+
+        roundWinner = 'player';
+    }
+}
+
 function computerPlay() {
     //create a variable that stores a random number
     let randomIndex = Math.floor(Math.random() * 3);
@@ -7,47 +35,43 @@ function computerPlay() {
     return weapon[randomIndex];
 }
 
-function playRound(playerSelection, computerSelection) {
-    //convert playerSelection to all lowercase
-    playerLowerCase = playerSelection.toLowerCase();
-    //if player and computer are the same, neither gets a score
-    if (playerLowerCase === computerSelection) {
-        return "Tie!";
-        //if computer beats player
-    } else if (playerLowerCase === "rock" && computerSelection === "paper" ||
-        playerLowerCase === "paper" && computerSelection === "scissors" ||
-        playerLowerCase === "scissors" && computerSelection === "rock") {
-        compScore += 1;
-        return "You lose! " + computerSelection.charAt(0).toUpperCase() + computerSelection.slice(1) + " beats " + playerLowerCase + ".";
-    } else {
-        userScore += 1;
-        return "pretty gud, chump";
-    }
+function updateScore(e, computerSelection) {
+
+    //for the player
+    playerChoice.remove();
+    playerQuestionMark.remove();
+    playerScore.textContent = `Player: ${userScore}`;
+    playerChoice.src = `./images/${e.target.classList.value}.png`;
+    playerScore.before(playerChoice);
+
+    //for the computer
+    compChoice.remove();
+    compQuestionMark.remove();
+    compScore.textContent = `Computer: ${computerScore}`;
+    compChoice.src = `./images/${computerSelection}.png`;
+    compScore.before(compChoice);
 }
 
-function game() {
-    //play 5 rounds (loop 5 times)
-    while (rounds > 0) {
-        //ask user for input (use prompt())
-        playerSelection = prompt("Which weapon do you want to play?");
-        //run playRound using user input
-        console.log(playRound(playerSelection, computerSelection));
-        rounds--;
-    }
-    //compare scores and output the winner
-    if (userScore > compScore) {
-        console.log("You win!! You beat the computer!");
-    } else if (compScore > userScore) {
-        console.log("You're a loser. You really suck. A machine beat you.")
-    } else {
-        console.log("Well dang! Pretty good, that was a tie.")
-    }
+//----------------------------------------------------------------//
+//USER INTERFACE
+
+function mainFunc(e) {
+    let playerSelection = (e.target.classList.value);
+    let computerSelection = computerPlay();
+    playRound(playerSelection, computerSelection);
+    updateScore(e, computerSelection);
 }
 
-const computerSelection = computerPlay();
-let playerSelection = "";
-let userScore = 0;
-let compScore = 0;
-let rounds = 5;
+const optionBtn = document.querySelectorAll('div .buttons input');
 
-game();
+const playerQuestionMark = document.getElementById('playerChoice');
+const playerChoice = document.createElement('img');
+const playerScore = document.getElementById('playerScore');
+
+const compQuestionMark = document.getElementById('computerChoice');
+const compChoice = document.createElement('img');
+const compScore = document.getElementById('computerScore');
+
+
+
+optionBtn.forEach(input => { input.addEventListener('click', mainFunc); });
