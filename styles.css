@@ -204,7 +204,8 @@ body {
         height: 70px;
     }
     .header .container {
-        font-size: 50%;
+        font-size: 45%;
+        padding: 0;
     }
     .center-section .buttons {
         flex-direction: row;
